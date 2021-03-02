@@ -1,6 +1,6 @@
 import sys
 
-set_language = 'RU' #'RU'
+set_language = 'EN' #'RU'
 warning = 'set_language contains inappropriate symbols, it must be either \'EN\' or \'RU\''
 
 def greetings():
