@@ -6,4 +6,6 @@ Prerequisites for script work:
 * [vk_api](https://github.com/python273/vk_api)
 * [spotipy](https://github.com/plamere/spotipy)
 
+The general workflow and idea of this script was inspired by [TheComeUpCode](https://github.com/TheComeUpCode/SpotifyGeneratePlaylist)'s project.
+
 Feel free to commit changes!
