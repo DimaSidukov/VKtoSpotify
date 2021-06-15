@@ -4,7 +4,7 @@ import loading_animation
 import threading
 import time
 import sys
-from script_info import vk_wrong_password, getting_vk_audio_message, getting_vk_playlist_music_message, getting_vk_albums_message
+from script_info import vk_wrong_password, getting_vk_audio_message, getting_vk_playlist_music_message, getting_vk_albums_message, get_2fa_code
 
 class ImportFromVk:
 
@@ -33,7 +33,7 @@ class ImportFromVk:
     """
     
     def __init__(self, vk_login, vk_password):
-        self.vk_session = vk_api.VkApi(login=vk_login, password=vk_password)
+        self.vk_session = vk_api.VkApi(login=vk_login, password=vk_password, auth_handler=get_2fa_code)
 
         try:
             self.vk_session.auth()
@@ -102,6 +102,8 @@ class ImportFromVk:
                 album_audio.append(temp_audio_list)
         else:
             for playlist in self.get_albums():
+                print(playlist['title'] in way, playlist['title'], way)
+
                 if playlist['title'] in way:                  
                     temp_audio_list = self.vk_audio.get(owner_id=playlist['owner_id'], album_id=playlist['id'], access_hash=playlist['access_hash'])
                     for track in temp_audio_list:

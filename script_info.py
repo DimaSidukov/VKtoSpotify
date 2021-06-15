@@ -60,9 +60,22 @@ def get_vk():
         source = list(input("Источник аудио: ").split(", "))
     else:
         sys.exit(warning)
-    print()
     
     return vk_login, vk_password, source
+
+def get_2fa_code():
+    code = None
+
+    if set_language == 'EN':
+        print("Enter your two-factor authentication code")
+        code = input("Code: ")
+    elif set_language == 'RU':
+        print("Введите код двухфакторной аутентификации")
+        code = input("Код: ")
+    else:
+        sys.exit(warning)
+    
+    return code, True # The second argument makes it clear whether to remember the session or not
 
 def vk_wrong_password():
     if set_language == 'RU':
@@ -82,7 +95,7 @@ def get_spotify():
 
     client_id = input("Client-ID: ")
     client_secret = input("Client-secret: ")
-    print()
+
     return client_id, client_secret
 
 def spotify_warnings(user_playlist='default'):
