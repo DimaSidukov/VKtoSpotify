@@ -102,8 +102,6 @@ class ImportFromVk:
                 album_audio.append(temp_audio_list)
         else:
             for playlist in self.get_albums():
-                print(playlist['title'] in way, playlist['title'], way)
-
                 if playlist['title'] in way:                  
                     temp_audio_list = self.vk_audio.get(owner_id=playlist['owner_id'], album_id=playlist['id'], access_hash=playlist['access_hash'])
                     for track in temp_audio_list:
