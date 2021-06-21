@@ -4,7 +4,7 @@ import loading_animation
 import threading
 import time
 import sys
-from script_info import vk_wrong_password, getting_vk_audio_message, getting_vk_playlist_music_message, getting_vk_albums_message
+from script_info import vk_wrong_password, getting_vk_audio_message, getting_vk_playlist_music_message, getting_vk_albums_message, get_2fa_code
 
 class ImportFromVk:
 
@@ -33,7 +33,7 @@ class ImportFromVk:
     """
     
     def __init__(self, vk_login, vk_password):
-        self.vk_session = vk_api.VkApi(login=vk_login, password=vk_password)
+        self.vk_session = vk_api.VkApi(login=vk_login, password=vk_password, auth_handler=get_2fa_code)
 
         try:
             self.vk_session.auth()
